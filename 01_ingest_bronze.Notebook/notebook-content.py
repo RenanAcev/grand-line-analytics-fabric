@@ -6,14 +6,31 @@
 # META   "kernel_info": {
 # META     "name": "synapse_pyspark"
 # META   },
-# META   "dependencies": {}
+# META   "dependencies": {
+# META     "lakehouse": {
+# META       "default_lakehouse": "6940c3c8-dda0-4a36-b5c5-981e73d670b9",
+# META       "default_lakehouse_name": "OnePieceLakehouse",
+# META       "default_lakehouse_workspace_id": "3dfb0c31-32fd-4d32-8709-91dea585a17f",
+# META       "known_lakehouses": [
+# META         {
+# META           "id": "6940c3c8-dda0-4a36-b5c5-981e73d670b9"
+# META         }
+# META       ]
+# META     }
+# META   }
 # META }
 
 # CELL ********************
 
-# Welcome to your new notebook
-# Type here in the cell editor to add code!
+import requests
+import pandas as pd
 
+url = "https://api.github.com/repos/amafoas/one-piece-api"
+
+response = requests.get(url)
+
+print(response.status_code)
+print(response.json())
 
 # METADATA ********************
 
