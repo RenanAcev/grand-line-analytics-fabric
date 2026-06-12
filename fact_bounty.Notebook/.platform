@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "fact_bounty"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "30c80dd1-c331-86a3-4f03-6cf9f7ce4cff"
+  }
+}
