@@ -23,14 +23,32 @@
 # CELL ********************
 
 import requests
-import pandas as pd
+import json
+from datetime import datetime
+from pyspark.sql import Row
 
-url = "https://api.github.com/repos/amafoas/one-piece-api"
+url = "https://api.api-onepiece.com/v2/characters/en"
 
 response = requests.get(url)
+response.raise_for_status()
 
-print(response.status_code)
-print(response.json())
+data = response.json()
+
+rows = [
+    Row(
+        source_system="api-onepiece",
+        entity_name="characters",
+        ingestion_timestamp=str(datetime.utcnow()),
+        raw_json=json.dumps(record)
+    )
+    for record in data
+]
+
+df_bronze = spark.createDataFrame(rows)
+
+df_bronze.write.mode("overwrite").format("delta").saveAsTable("bronze_characters_raw")
+
+display(df_bronze)
 
 # METADATA ********************
 
