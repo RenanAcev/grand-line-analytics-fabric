@@ -22,9 +22,17 @@
 
 # CELL ********************
 
-# Welcome to your new notebook
-# Type here in the cell editor to add code!
-
+spark.sql("""
+SELECT
+    c.character_name,
+    c.job,
+    b.bounty_amount
+FROM dim_character c
+LEFT JOIN fact_bounty b
+    ON c.character_id = b.character_id
+ORDER BY b.bounty_amount DESC
+LIMIT 20
+""").show(20, False)
 
 # METADATA ********************
 
