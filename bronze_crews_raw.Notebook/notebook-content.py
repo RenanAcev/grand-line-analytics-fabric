@@ -16,6 +16,9 @@
 # META           "id": "6940c3c8-dda0-4a36-b5c5-981e73d670b9"
 # META         }
 # META       ]
+# META     },
+# META     "warehouse": {
+# META       "known_warehouses": []
 # META     }
 # META   }
 # META }
@@ -49,9 +52,10 @@ df_bronze_crews = spark.createDataFrame(rows)
 df_bronze_crews.write \
     .mode("overwrite") \
     .format("delta") \
-    .saveAsTable("bronze_crews_raw")
+    .saveAsTable("OnePieceLakehouse.bronze_crews_raw")
 
 display(df_bronze_crews)
+
 
 # METADATA ********************
 

@@ -22,36 +22,46 @@
 
 # CELL ********************
 
-import requests
-import json
-from datetime import datetime
-from pyspark.sql import Row
+from pyspark.sql.functions import col
 
-url = "https://api.api-onepiece.com/v2/crews/en"
+df_silver_crews = spark.table("silver_crews")
 
-response = requests.get(url)
-response.raise_for_status()
-
-data = response.json()
-
-rows = [
-    Row(
-        source_system="api-onepiece",
-        entity_name="crews",
-        ingestion_timestamp=str(datetime.utcnow()),
-        raw_json=json.dumps(record)
+df_dim_crew = (
+    df_silver_crews
+    .select(
+        col("crew_id"),
+        col("crew_name"),
+        col("roman_name"),
+        col("crew_status"),
+        col("crew_members_count"),
+        col("is_yonko")
     )
-    for record in data
-]
+)
 
-df_bronze_crews = spark.createDataFrame(rows)
-
-df_bronze_crews.write \
+df_dim_crew.write \
     .mode("overwrite") \
+    .option("overwriteSchema", "true") \
     .format("delta") \
-    .saveAsTable("bronze_crews_raw")
+    .saveAsTable("dim_crew")
 
-display(df_bronze_crews)
+display(df_dim_crew)
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+spark.sql("""
+SELECT *
+FROM dim_crew
+ORDER BY crew_members_count DESC
+LIMIT 20
+""").show(20, False)
 
 # METADATA ********************
 
