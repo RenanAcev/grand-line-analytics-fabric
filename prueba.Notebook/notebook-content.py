@@ -22,36 +22,7 @@
 
 # CELL ********************
 
-import requests
-import json
-from datetime import datetime
-from pyspark.sql import Row
-
-url = "https://api.api-onepiece.com/v2/crews/en"
-
-response = requests.get(url)
-response.raise_for_status()
-
-data = response.json()
-
-rows = [
-    Row(
-        source_system="api-onepiece",
-        entity_name="crews",
-        ingestion_timestamp=str(datetime.utcnow()),
-        raw_json=json.dumps(record)
-    )
-    for record in data
-]
-
-df_bronze_crews = spark.createDataFrame(rows)
-
-df_bronze_crews.write \
-    .mode("overwrite") \
-    .format("delta") \
-    .saveAsTable("bronze_crews_raw")
-
-display(df_bronze_crews)
+spark.sql("SHOW TABLES").show()
 
 # METADATA ********************
 
