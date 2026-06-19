@@ -1,37 +1,56 @@
-# Grand Line Analytics
+# 🏴‍☠️ Grand Line Analytics
 
-An end-to-end Microsoft Fabric Data Engineering project using One Piece data.
+An end-to-end analytics platform built with Microsoft Fabric using data from a public One Piece API.
 
-## Objectives
+## Project Overview
 
-Build a modern analytics platform using:
-
-- Microsoft Fabric
-- Lakehouse
-- Data Pipelines
-- PySpark
-- Delta Tables
-- Data Warehouse
-- Power BI
-- GitHub
-- CI/CD
+This project demonstrates how to build a modern analytics solution using Microsoft Fabric, following a Medallion Architecture (Bronze, Silver, Gold) and a dimensional Star Schema for reporting and analysis.
 
 ## Architecture
 
-Source → Bronze → Silver → Gold → Warehouse → Power BI
+One Piece API → Bronze Layer → Silver Layer → Gold Layer → Star Schema → Semantic Model → Power BI
+
+## Key Features
+
+* REST API Data Ingestion
+* Lakehouse Architecture
+* Bronze, Silver & Gold Layers
+* PySpark Transformations
+* Delta Tables
+* Dimensional Star Schema Modeling
+* Semantic Model
+* Interactive Power BI Dashboard
+* GitHub Source Control Integration
+
+## Data Model
+
+Star Schema:
+
+* dim_character
+* dim_crew
+* fact_character_bounty
 
 ## Business Questions
 
-- Which crew has the highest total bounty?
-- What are the most common Devil Fruit types?
-- Which characters have the highest bounties?
-- How are characters distributed across story arcs?
+* Which pirate crews have the highest total bounty?
+* Which characters have the highest bounties?
+* What are the most common Devil Fruit types?
+* How does crew size relate to total bounty?
 
 ## Technologies
 
-- Microsoft Fabric
-- PySpark
-- SQL
-- Delta Lake
-- Power BI
-- GitHub Actions
+* Microsoft Fabric
+* Lakehouse
+* OneLake
+* PySpark
+* SQL
+* Delta Lake
+* Power BI
+* GitHub
+
+## Future Improvements
+
+* Data Pipelines
+* Incremental Processing
+* Data Quality Framework
+* CI/CD & Deployment Pipelines
