@@ -1,0 +1,47 @@
+table fact_character_bounty
+	lineageTag: e25832bc-e466-44bf-a4bb-af5a9dc20cd7
+	sourceLineageTag: [dbo].[fact_character_bounty]
+
+	column character_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 231c7929-1525-4b1c-9c58-33ecf4d03c8d
+		sourceLineageTag: character_id
+		summarizeBy: none
+		sourceColumn: character_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column crew_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9d03b18f-f57a-482d-a809-e081c92e8069
+		sourceLineageTag: crew_id
+		summarizeBy: none
+		sourceColumn: crew_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column bounty_amount
+		dataType: int64
+		formatString: 0
+		lineageTag: d0c56bee-b9df-44b4-a9db-98ee96f1476f
+		sourceLineageTag: bounty_amount
+		summarizeBy: sum
+		sourceColumn: bounty_amount
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_character_bounty = entity
+		mode: directLake
+		source
+			entityName: fact_character_bounty
+			schemaName: dbo
+			expressionSource: 'DirectLake - OnePieceLakehouse'
+

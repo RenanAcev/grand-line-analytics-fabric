@@ -1,0 +1,71 @@
+table dim_crew
+	lineageTag: d91cdd73-5656-4d2a-b446-256704d8cdb6
+	sourceLineageTag: [dbo].[dim_crew]
+
+	column crew_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 69fa4122-0283-4474-ac89-934ba5b320ae
+		sourceLineageTag: crew_id
+		summarizeBy: none
+		sourceColumn: crew_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column crew_name
+		dataType: string
+		lineageTag: 006424c0-2f4f-4e59-91a7-bf3ea8ddeca2
+		sourceLineageTag: crew_name
+		summarizeBy: none
+		sourceColumn: crew_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column roman_name
+		dataType: string
+		lineageTag: a2b07796-8f4a-4a48-b437-e5d47e3f05aa
+		sourceLineageTag: roman_name
+		summarizeBy: none
+		sourceColumn: roman_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column crew_status
+		dataType: string
+		lineageTag: 58467b6a-4ed2-4fda-b47b-5d10f97bccad
+		sourceLineageTag: crew_status
+		summarizeBy: none
+		sourceColumn: crew_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column crew_members_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 86eb00b9-69c5-4292-90ca-205466f2c601
+		sourceLineageTag: crew_members_count
+		summarizeBy: none
+		sourceColumn: crew_members_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_yonko
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7a45bf35-9282-44db-b060-9ce5e2b02c5f
+		sourceLineageTag: is_yonko
+		summarizeBy: none
+		sourceColumn: is_yonko
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_crew = entity
+		mode: directLake
+		source
+			entityName: dim_crew
+			schemaName: dbo
+			expressionSource: 'DirectLake - OnePieceLakehouse'
+

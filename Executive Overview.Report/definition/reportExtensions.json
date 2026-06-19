@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/reportExtension/1.0.0/schema.json",
+  "name": "extension",
+  "entities": [
+    {
+      "name": "dim_character",
+      "measures": [
+        {
+          "name": "Total Characters",
+          "dataType": "Double",
+          "expression": "COUNTROWS(dim_character)",
+          "formatString": "General Number"
+        },
+        {
+          "name": "Total Crews",
+          "dataType": "Double",
+          "expression": "COUNTROWS(dim_crew)",
+          "formatString": "General Number"
+        },
+        {
+          "name": "Total Bounty",
+          "dataType": "Double",
+          "expression": "SUM(fact_bounty[bounty_amount])",
+          "formatString": "#,0.00"
+        },
+        {
+          "name": "Yonko Crews",
+          "dataType": "Double",
+          "expression": "\nCALCULATE(\n    COUNTROWS(dim_crew),\n    dim_crew[is_yonko] = TRUE()\n)",
+          "formatString": "General Number"
+        }
+      ]
+    }
+  ]
+}

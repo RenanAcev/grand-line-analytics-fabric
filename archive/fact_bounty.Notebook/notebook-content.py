@@ -22,7 +22,27 @@
 
 # CELL ********************
 
-spark.sql("SHOW TABLES").show()
+from pyspark.sql.functions import col
+
+df_silver = spark.table("silver_characters")
+
+df_fact_character_bounty = (
+    df_silver
+    .select(
+        col("character_id").cast("int"),
+        col("crew_id").cast("int"),
+        col("bounty_amount").cast("bigint")
+    )
+    .where(col("bounty_amount").isNotNull())
+)
+
+df_fact_character_bounty.write \
+    .mode("overwrite") \
+    .option("overwriteSchema", "true") \
+    .format("delta") \
+    .saveAsTable("fact_character_bounty")
+
+display(df_fact_character_bounty)
 
 # METADATA ********************
 

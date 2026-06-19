@@ -1,0 +1,11 @@
+expression 'DirectLake - OnePieceLakehouse' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/3dfb0c31-32fd-4d32-8709-91dea585a17f/6940c3c8-dda0-4a36-b5c5-981e73d670b9", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: 8d203fba-f7ef-4521-97af-441056ad1d57
+
+	annotation PBI_IncludeFutureArtifacts = False
+
+	annotation PBI_RemovedChildren = [{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[bronze_crews_raw]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[silver_crews]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[bronze_characters_raw]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[silver_characters]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[fact_crew_summary]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[fact_bounty]"}},"objectType":"Table"}]
+

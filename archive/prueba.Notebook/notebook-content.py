@@ -22,33 +22,11 @@
 
 # CELL ********************
 
-from pyspark.sql.functions import col
+df_bronze = spark.table("bronze_characters_raw")
 
-df_silver = spark.table("silver_characters")
+sample_json = df_bronze.select("raw_json").first()["raw_json"]
 
-df_dim_character = (
-    df_silver
-    .select(
-        col("character_id"),
-        col("character_name"),
-        col("job"),
-        col("size"),
-        col("age"),
-        col("character_status"),
-        col("fruit_id"),
-        col("fruit_name"),
-        col("fruit_type")
-    )
-    .dropDuplicates(["character_id"])
-)
-
-df_dim_character.write \
-    .mode("overwrite") \
-    .option("overwriteSchema", "true") \
-    .format("delta") \
-    .saveAsTable("dim_character")
-
-display(df_dim_character)
+print(sample_json)
 
 # METADATA ********************
 

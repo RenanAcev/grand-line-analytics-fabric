@@ -1,0 +1,8 @@
+relationship 617ab822-a128-da86-7a8e-8cb58019b4a2
+	fromColumn: fact_character_bounty.character_id
+	toColumn: dim_character.character_id
+
+relationship ec536879-4f15-2cda-92ef-06dd73294870
+	fromColumn: fact_character_bounty.crew_id
+	toColumn: dim_crew.crew_id
+

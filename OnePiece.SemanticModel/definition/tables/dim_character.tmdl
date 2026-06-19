@@ -1,0 +1,100 @@
+table dim_character
+	lineageTag: 29e9cb26-95f3-4fab-aff2-ced7c2e6c72b
+	sourceLineageTag: [dbo].[dim_character]
+
+	column character_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1e5c1add-eaab-4da6-b840-30ab438af9db
+		sourceLineageTag: character_id
+		summarizeBy: none
+		sourceColumn: character_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column character_name
+		dataType: string
+		lineageTag: d21b76db-9029-4983-8c0b-f9ea6fa127b9
+		sourceLineageTag: character_name
+		summarizeBy: none
+		sourceColumn: character_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column job
+		dataType: string
+		lineageTag: 756e3cde-2f21-4b4e-ac6d-e7ad7d15fdec
+		sourceLineageTag: job
+		summarizeBy: none
+		sourceColumn: job
+
+		annotation SummarizationSetBy = Automatic
+
+	column age
+		dataType: string
+		lineageTag: 9ad6c163-ee6f-4cad-9307-54176229059f
+		sourceLineageTag: age
+		summarizeBy: none
+		sourceColumn: age
+
+		annotation SummarizationSetBy = Automatic
+
+	column size
+		dataType: string
+		lineageTag: 19a7dacd-cfcc-4718-a54f-3c4dbdb7a640
+		sourceLineageTag: size
+		summarizeBy: none
+		sourceColumn: size
+
+		annotation SummarizationSetBy = Automatic
+
+	column character_status
+		dataType: string
+		lineageTag: 618d3bfb-6144-4363-b231-e56f7eb29319
+		sourceLineageTag: character_status
+		summarizeBy: none
+		sourceColumn: character_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column fruit_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fd56088d-8773-4f7c-847b-690566ce4c4f
+		sourceLineageTag: fruit_id
+		summarizeBy: none
+		sourceColumn: fruit_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column fruit_name
+		dataType: string
+		lineageTag: d861c364-8782-42dd-bc7e-d48ac57d4be0
+		sourceLineageTag: fruit_name
+		summarizeBy: none
+		sourceColumn: fruit_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column fruit_type
+		dataType: string
+		lineageTag: 826b3d75-3188-472f-801f-41647211d734
+		sourceLineageTag: fruit_type
+		summarizeBy: none
+		sourceColumn: fruit_type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_character = entity
+		mode: directLake
+		source
+			entityName: dim_character
+			schemaName: dbo
+			expressionSource: 'DirectLake - OnePieceLakehouse'
+

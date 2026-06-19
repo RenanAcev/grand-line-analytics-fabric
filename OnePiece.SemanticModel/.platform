@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "OnePiece"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e93d2604-37a1-894e-4d55-436bc14eed18"
+  }
+}
