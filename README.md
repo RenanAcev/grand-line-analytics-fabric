@@ -6,6 +6,10 @@ An end-to-end analytics platform built with Microsoft Fabric using data from a p
 
 This project demonstrates how to build a modern analytics solution using Microsoft Fabric, following a Medallion Architecture (Bronze, Silver, Gold) and a dimensional Star Schema for reporting and analysis.
 
+## Dashboard
+
+![Dashboard](C:\Users\Renan\Downloads\db_op.png)
+
 ## Architecture
 
 One Piece API → Bronze Layer → Silver Layer → Gold Layer → Star Schema → Semantic Model → Power BI
